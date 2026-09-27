@@ -93,9 +93,33 @@ Generated from a high-resolution plush sherpa wool model with soft lighting, pas
 
 ---
 
+---
+
 ## 🚀 Building & Flashing
 
-### Using PlatformIO
+### Prerequisites & Dependencies
+All platform toolchains, SDKs, and third-party libraries are **automatically managed and downloaded** by [PlatformIO](https://platformio.org/) via [`platformio.ini`](platformio.ini). You do not need to manually install or commit SDK files:
+- **Platform**: `espressif32` (Espressif 32 Arduino core + ESP-IDF tools fetched on first build)
+- **Framework**: `arduino`
+- **Libraries**:
+  - [`m5stack/M5Unified`](https://github.com/m5stack/M5Unified) (Unified display, touch, sound, IMU, and power management)
+  - [`fastled/FastLED`](https://github.com/FastLED/FastLED) (SK6812 side LED ambient lighting)
+
+#### Tooling Setup
+Install PlatformIO using either:
+- **VS Code**: Install the official **PlatformIO IDE** extension.
+- **CLI**:
+  ```bash
+  pip install -U platformio
+  # or on macOS:
+  brew install platformio
+  ```
+
+*Note: Depending on your OS, ensure you have the [CP210x or CH9102 USB VCP Driver](https://docs.m5stack.com/en/core/core2#driver-installation) installed so the device serial port is recognized.*
+
+---
+
+### Step-by-Step Build & Flash
 
 1. Clone this repository:
    ```bash
@@ -103,12 +127,12 @@ Generated from a high-resolution plush sherpa wool model with soft lighting, pas
    cd m5stack-bunny-pet
    ```
 
-2. Build firmware:
+2. Build firmware (PlatformIO will automatically download the toolchain and libraries on first run):
    ```bash
    pio run -e m5stack-core2
    ```
 
-3. Connect your M5Stack Core2 via USB and upload:
+3. Connect your M5Stack Core2 via USB-C and flash:
    ```bash
    pio run -e m5stack-core2 -t upload
    ```
